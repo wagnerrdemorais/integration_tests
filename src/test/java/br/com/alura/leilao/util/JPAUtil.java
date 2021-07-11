@@ -6,9 +6,11 @@ import javax.persistence.Persistence;
 
 public class JPAUtil {
 
-    private static final EntityManagerFactory factory = Persistence.createEntityManagerFactory("tests");
+    private static EntityManagerFactory factory = Persistence
+            .createEntityManagerFactory("tests");
 
     public static EntityManager getEntityManager() {
         return factory.createEntityManager();
     }
+
 }
