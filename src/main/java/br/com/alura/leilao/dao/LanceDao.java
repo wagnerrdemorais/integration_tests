@@ -11,8 +11,11 @@ import br.com.alura.leilao.model.Leilao;
 @Repository
 public class LanceDao {
 
-	@PersistenceContext
 	private EntityManager em;
+
+	public LanceDao(EntityManager em) {
+		this.em = em;
+	}
 
 	public void salvar(Lance lance) {
 		em.persist(lance);
