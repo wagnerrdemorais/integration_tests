@@ -10,17 +10,20 @@ import br.com.alura.leilao.model.Usuario;
 @Repository
 public class UsuarioDao {
 
-	@PersistenceContext
-	private EntityManager em;
+    private final EntityManager em;
 
-	public Usuario buscarPorUsername(String username) {
-		return em.createQuery("SELECT u FROM Usuario u WHERE u.nome = :username", Usuario.class)
-				.setParameter("username", username)
-				.getSingleResult();
-	}
+    public UsuarioDao(EntityManager em) {
+        this.em = em;
+    }
 
-	public void deletar(Usuario usuario) {
-		em.remove(usuario);
-	}
+    public Usuario buscarPorUsername(String username) {
+        return em.createQuery("SELECT u FROM Usuario u WHERE u.nome = :username", Usuario.class)
+                .setParameter("username", username)
+                .getSingleResult();
+    }
+
+    public void deletar(Usuario usuario) {
+        em.remove(usuario);
+    }
 
 }
